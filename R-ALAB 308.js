@@ -20,6 +20,38 @@
 
 
 
+// Part 2: Prime Time
+
+
+let n=9;
+
+function prime (number){
+  if (number<=1){
+    return false;
+  } for (let i=2; i< number; i++){
+    if (number % i ===0){
+      return false;
+    }
+  }
+  return true;
+
+
+}
+
+let next = n+1;
+
+while (true){
+  if (prime(next)){
+    console.log("next prime number is :"  + next );
+    break;
+  }
+  next = next +1
+}
+
+
+
+
+
 // Feeling Loopy
 
 // Starting String
