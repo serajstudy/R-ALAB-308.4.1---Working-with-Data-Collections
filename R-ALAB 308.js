@@ -15,7 +15,7 @@
 //     } else {console.log(i)
 
 //     }
- 
+
 // }
 
 
@@ -201,29 +201,99 @@ let table = [
 
 let headers = table[0];
 
-let arry =[];
+let arry = [];
 
-for (let i=0; i<headers.length; i++){
+for (let i = 0; i < headers.length; i++) {
 
   arry.push(headers[i].toLowerCase());
 }
 
-let objectArray =[];
-for (let i=1; i<table.length; i++){
+let objectArray = [];
+for (let i = 1; i < table.length; i++) {
   let row = table[i];
-  let obj = {};              
+  let obj = {};
 
 
 
-for (let s=0 ; s < row .length; s++){
-  obj[arry[s]]=row [s];
+  for (let s = 0; s < row.length; s++) {
+    obj[arry[s]] = row[s];
+  }
+
+  objectArray.push(obj);
 }
 
-objectArray.push(obj);
+console.log("object Array:")
+console.log(objectArray);
+
+
+
+
+// // Part 4: Sorting and Manipulating Data
+
+
+let table1 = [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+{ id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+{ id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+{ id: "98", name: "Bill", occupation: "Doctor’s Assistant", age: "26" }];
+
+//  console.log (table1);
+
+// //  Remove the last element from the sorted array.
+
+table1.pop();
+
+
+console.log(table1);
+
+// // // Insert the following object at index 1:
+
+let add = { id: "48", name: "Barry", occupation: "Runner", age: "25" }
+
+table1.splice(1, 0, add);
+
+console.log(table1);
+
+// // Add the following object to the end of the array:
+
+let endadd = { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+
+
+table1.push(endadd);
+console.log(table1);
+
+
+// // Part 5: Full Circle
+
+// console.log(table);
+
+
+let file = [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+ { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+ { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+ { id: "98", name: "Bill", occupation: "Doctor’s Assistant", age: "26" }];
+
+
+let header = Object.keys(file[0]);
+let fileString = headers.join(",");
+
+
+for (let i = 0; i < file.length; i++) {
+  let row = file[i];
+  let values = [];
+
+  for (let j = 0; j < header.length; j++) {
+    let key = header[j];
+    values.push(row[key]);
+  }
+  let rowString = values.join(",");
+  fileString += "\n" + rowString;
 }
 
-console.log (objectArray);
+console.log(fileString);
 
 
-// Part 4: Sorting and Manipulating Data
+
+
+
+
 

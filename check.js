@@ -50,3 +50,38 @@ for (let i = 0; i < csvStr.length; i++) {
 
 // Step 3: Print the final 2D array
 console.log(table);
+
+
+
+let table = [
+  ["ID", "Name", "Occupation", "Age"],
+  ["42", "Bruce", "Knight", "41"],
+  ["57", "Bob", "Fry Cook", "19"],
+  ["63", "Blaine", "Quiz Master", "58"],
+  ["98", "Bill", "Doctor’s Assistant", "26"]
+];
+
+let headers = table[0];
+
+let arry =[];
+
+for (let i=0; i<headers.length; i++){
+
+  arry.push(headers[i].toLowerCase());
+}
+
+let objectArray =[];
+for (let i=1; i<table.length; i++){
+  let row = table[i];
+  let obj = {};              
+
+
+
+for (let s=0 ; s < row .length; s++){
+  obj[arry[s]]=row [s];
+}
+
+objectArray.push(obj);
+}
+
+console.log (objectArray);
