@@ -120,59 +120,110 @@
 // Part 2: Expanding Functionality
 
 // // Starting String
+
+
+// Starting String
 let csvStr = `  ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26`;
+//  Variables
+let cell1 = "";
+let cell2 = "";
+let cell3 = "";
+let cell4 = "";
+let commas = 0; // Counter variable
 
-// //  Variables
-// let cell1 = "";
-// let cell2 = "";
-// let cell3 = "";
-// let cell4 = "";
-// let commas = 0; // Counter variable
+// Loop through string, for loop to have access to the index
+for (let i = 0; i < csvStr.length; i++) {
+  if (csvStr[i] == ",") {
+    // If comma
+    commas++; // Add to comma counter
+  } else if (csvStr[i] == "\n") {
+    // If new line
+    console.log(cell1, cell2, cell3, cell4); // print new line
 
-// // Loop through string, for loop to have access to the index
-// for (let i = 0; i < csvStr.length; i++) {
-//   if (csvStr[i] == ",") {
-//     // If comma
-//     commas++; // Add to comma counter
-//   } else if (csvStr[i] == "\n") {
-//     // If new line
-//     console.log(cell1, cell2, cell3, cell4); // print new line
+    // Clear previous data for new row
+    commas = 0;
+    cell1 = "";
+    cell2 = "";
+    cell3 = "";
+    cell4 = "";
+  } else {
+    // for all chars
+    if (commas == 0) {
+      // put in the appropriate cell, based on commas
+      cell1 += csvStr[i];
+    } else if (commas == 1) {
+      cell2 += csvStr[i];
+    } else if (commas == 2) {
+      cell3 += csvStr[i];
+    } else {
+      cell4 += csvStr[i];
+    }
+  }
 
-//     // Clear previous data for new row
-//     commas = 0;
-//     cell1 = "";
-//     cell2 = "";
-//     cell3 = "";
-//     cell4 = "";
-//   } else {
-//     // for all chars
-//     if (commas == 0) {
-//       // put in the appropriate cell, based on commas
-//       cell1 += csvStr[i];
-//     } else if (commas == 1) {
-//       cell2 += csvStr[i];
-//     } else if (commas == 2) {
-//       cell3 += csvStr[i];
-//     } else {
-//       cell4 += csvStr[i];
-//     }
-//   }
-
-//   // If last char in string print final cells
-//   if (csvStr.length - 1 == i) {
-//     console.log(cell1, cell2, cell3, cell4);
-//   }
-// }
+  // If last char in string print final cells
+  if (csvStr.length - 1 == i) {
+    console.log(cell1, cell2, cell3, cell4);
+  }
+}
 
 
-// let columnCount = 1;
-// for (let i = 0; i < csvStr.length; i++) {
-//   if (csvStr[i] === ",") columnCount++;
-//   if (csvStr[i] === "\n") break; // only check the header
-// }
 
-// let currentRow = new Array(columnCount).fill("");
-// let allRows = [];
-// let colIndex = 0;
+// // Store your results in a two-dimensional array.
+// Each row should be its own array, with individual entries for each column.
+// Each row should be stored in a parent array, with the heading row located at index 0.
+// Cache this two-dimensional array in a variable for later use.
 
-let csvStr = [  ]
+let rows = csvStr.split('\n');
+let twoDimensionalArray = rows.map(row => row.split(','));
+// console.log(twoDimensionalArray);
+
+
+// Part 3: Transforming Data
+
+// For each row of data in the result array produced by your code above, create an object where the key of each value is the heading for that value’s column.
+// Convert these keys to all lowercase letters for consistency.
+// Store these objects in an array, in the order that they were originally listed.
+// Since the heading for each column will be stored in the object keys, you do not need to create an object for the heading row itself.
+
+
+
+// let table = console.log(twoDimensionalArray);
+
+// or
+
+let table = [
+  ["ID", "Name", "Occupation", "Age"],
+  ["42", "Bruce", "Knight", "41"],
+  ["57", "Bob", "Fry Cook", "19"],
+  ["63", "Blaine", "Quiz Master", "58"],
+  ["98", "Bill", "Doctor’s Assistant", "26"]
+];
+
+let headers = table[0];
+
+let arry =[];
+
+for (let i=0; i<headers.length; i++){
+
+  arry.push(headers[i].toLowerCase());
+}
+
+let objectArray =[];
+for (let i=1; i<table.length; i++){
+  let row = table[i];
+  let obj = {};              
+
+
+
+for (let s=0 ; s < row .length; s++){
+  obj[arry[s]]=row [s];
+}
+
+objectArray.push(obj);
+}
+
+console.log (objectArray);
+
+
+// Part 4: Sorting and Manipulating Data
+
